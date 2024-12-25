@@ -2,7 +2,7 @@
 
 import { testAction, testErrorAction } from '@/actions/testAction';
 import { toast } from '@pheralb/toast';
-import { PartyPopperIcon } from 'lucide-react';
+import { PartyPopperIcon, XCircle } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
 
@@ -16,6 +16,15 @@ export default function Home() {
     toast.default({
       text: 'Rendered toast!',
       description: 'This is a success toast!',
+      delayDuration: duration,
+    });
+  };
+
+  const renderToastWithCloseIcon = () => {
+    toast.default({
+      closeIcon: <XCircle width={18} height={18} />,
+      text: 'Rendered toast!',
+      description: 'This is a toast with close icon!',
       delayDuration: duration,
     });
   };
@@ -111,6 +120,12 @@ export default function Home() {
       <button className={buttonStyles} onClick={() => testLoading()}>
         Test Loading with Next.js Server Action
       </button>
+
+      <button className={buttonStyles} onClick={() => renderToastWithCloseIcon()}>
+        Test with close icon
+      </button>
+
+
     </>
   );
 }

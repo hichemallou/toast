@@ -1,13 +1,13 @@
 import { useEffect, useState, type FC } from 'react';
+import '../styles/toast-component.css';
 import type {
   Position,
   ToastPropsWithLoading,
   Variant,
 } from '../types/toast.types';
-import '../styles/toast-component.css';
 
-import { Error, Info, Loading, Success, Warning } from '../icons';
 import { useTimeout } from '../hooks/useTimeout';
+import { Error, Info, Loading, Success, Warning } from '../icons';
 import { classNames, prefersReducedMotion } from '../utils';
 
 const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
@@ -16,6 +16,7 @@ const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
   warning: Warning,
   info: Info,
   loading: Loading,
+
 };
 
 const iconsColors: Record<Variant, string> = {
@@ -24,6 +25,7 @@ const iconsColors: Record<Variant, string> = {
   warning: '#eab308',
   info: '#3b82f6',
   loading: 'currentColor',
+
 };
 
 interface ToastComponentProps extends ToastPropsWithLoading {
@@ -174,7 +176,11 @@ const Toast = (props: ToastComponentProps) => {
           </button>
         )}
         <button onClick={handleCloseToast} title="Close toast">
-          Close
+          {props.closeIcon ?
+            props.closeIcon
+            : 'Close'
+          }
+
         </button>
       </div>
     </div>

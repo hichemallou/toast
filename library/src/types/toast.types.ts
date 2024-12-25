@@ -21,6 +21,7 @@ export type ToastProps = {
   text: string;
   description?: string;
   icon?: ReactNode;
+  closeIcon?: ReactNode;
   delayDuration?: number;
   theme?: Theme;
   action?: Action;
@@ -28,10 +29,10 @@ export type ToastProps = {
 
 export interface LoadingType {
   promise:
-    | (() => Promise<void>)
-    | Promise<void>
-    | (() => Promise<any>)
-    | Promise<unknown>;
+  | (() => Promise<void>)
+  | Promise<void>
+  | (() => Promise<any>)
+  | Promise<unknown>;
   success: string;
   error: string;
   autoDismiss: boolean;
